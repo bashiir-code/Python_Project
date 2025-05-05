@@ -1,5 +1,4 @@
 # Python_Project
-python Movies dataset correlation project
 \documentclass[12pt]{article}
 \usepackage[a4paper, margin=1in]{geometry}
 \usepackage{graphicx}
