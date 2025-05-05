@@ -104,18 +104,18 @@ The goal is to **calculate correlation coefficients** and **visualize relationsh
              # Load the CSV file into a pandas DataFrame
              movies = pd.read_csv(csv_file_path)
 - **Header Correction**: Ensured proper column names were assigned during data import.
-             # Check the columns of the DataFrame
-             print("Columns in the DataFrame:")
-             print(movies.columns)
+              # Check the columns of the DataFrame
+              print("Columns in the DataFrame:")
+              print(movies.columns)
 
-             Output:
-             Columns in the DataFrame:
-             Index(['name', 'rating', 'genre', 'year', 'released', 'score', 'votes',
-                    'director', 'writer', 'star', 'country', 'budget', 'gross', 'company',
-                    'runtime'],
-                   dtype='object')
+              Output:
+              Columns in the DataFrame:
+              Index(['name', 'rating', 'genre', 'year', 'released', 'score', 'votes',
+                     'director', 'writer', 'star', 'country', 'budget', 'gross', 'company',
+                     'runtime'],
+                    dtype='object')
 
-             They had already proper column names
+  They had already proper column names
   
 - **Data Types**: Verified all columns had the correct data types (e.g., numeric, datetime, categorical).
 
