@@ -104,24 +104,45 @@ The goal is to **calculate correlation coefficients** and **visualize relationsh
              # Load the CSV file into a pandas DataFrame
              movies = pd.read_csv(csv_file_path)
 - **Header Correction**: Ensured proper column names were assigned during data import.
-              # Check the columns of the DataFrame
-              print("Columns in the DataFrame:")
-              print(movies.columns)
+                # Check the columns of the DataFrame
+                print("Columns in the DataFrame:")
+                print(movies.columns)
 
-              Output:
-              Columns in the DataFrame:
-              Index(['name', 'rating', 'genre', 'year', 'released', 'score', 'votes',
-                     'director', 'writer', 'star', 'country', 'budget', 'gross', 'company',
-                     'runtime'],
-                    dtype='object')
+                Output:
+                Columns in the DataFrame:
+                Index(['name', 'rating', 'genre', 'year', 'released', 'score', 'votes',
+                       'director', 'writer', 'star', 'country', 'budget', 'gross', 'company',
+                       'runtime'],
+                      dtype='object')
 
   They had already proper column names
   
 - **Data Types**: Verified all columns had the correct data types (e.g., numeric, datetime, categorical).
 
-                # Display data types of the columns
-                print("\nData types of the columns:")
-                print(movies.dtypes)
+                  # Display data types of the columns
+                  print("\nData types of the columns:")
+                  print(movies.dtypes)
+
+                  Data types of the columns:
+                  name         object
+                  rating       object
+                  genre        object
+                  year          int64
+                  released     object
+                  score       float64
+                  votes       float64
+                  director     object
+                  writer       object
+                  star         object
+                  country      object
+                  budget      float64
+                  gross       float64
+                  company      object
+                  runtime     float64
+                  dtype: object
+
+year should be changed to datetime
+  
 - **Missing Values**: Checked for and flagged missing or null entries for critical fields like `budget`, `gross`, and `score`.
 - **Duplicate Records**: Confirmed that there were no duplicated movie entries in the dataset.
 - **Initial Summary**: Generated basic statistical summaries to identify any data distribution issues or outliers.
