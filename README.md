@@ -69,3 +69,64 @@ The goal is to **calculate correlation coefficients** and **visualize relationsh
 - Provide strategic insights into movie production and distribution  
 
 ---
+
+### ✅ Data Quality Steps Performed:
+- **Import data**:
+          import os
+          import json
+
+          # Ensure the file variable points to the correct kaggle.json file
+          # Ensure the file variable points to the correct kaggle.json file
+          kaggle_json_path = r'C:\Users\bashi\Downloads\kaggle (1).json'  # Update this path if needed
+
+           # Make .kaggle directory and move the file there
+           os.makedirs(os.path.expanduser('~/.kaggle'), exist_ok=True)
+           os.system(f'cp "{kaggle_json_path}" ~/.kaggle/')
+           os.system('chmod 600 ~/.kaggle/kaggle.json')
+
+
+           import kagglehub
+
+           # Download latest version
+           path = kagglehub.dataset_download("danielgrijalvas/movies")
+
+           print("Path to dataset files:", path)
+
+           # Importing necessary libraries
+           import pandas as pd
+           import numpy as np
+           import matplotlib.pyplot as plt
+           import seaborn as sns
+
+            # Construct the full path to the CSV file
+            csv_file_path = os.path.join(path, "movies.csv")
+
+             # Load the CSV file into a pandas DataFrame
+             movies = pd.read_csv(csv_file_path)
+- **Header Correction**: Ensured proper column names were assigned during data import.
+             # Check the columns of the DataFrame
+             print("Columns in the DataFrame:")
+             print(movies.columns)
+
+             Output:
+             Columns in the DataFrame:
+             Index(['name', 'rating', 'genre', 'year', 'released', 'score', 'votes',
+                    'director', 'writer', 'star', 'country', 'budget', 'gross', 'company',
+                    'runtime'],
+                   dtype='object')
+
+             They had already proper column names
+  
+- **Data Types**: Verified all columns had the correct data types (e.g., numeric, datetime, categorical).
+
+                # Display data types of the columns
+                print("\nData types of the columns:")
+                print(movies.dtypes)
+- **Missing Values**: Checked for and flagged missing or null entries for critical fields like `budget`, `gross`, and `score`.
+- **Duplicate Records**: Confirmed that there were no duplicated movie entries in the dataset.
+- **Initial Summary**: Generated basic statistical summaries to identify any data distribution issues or outliers.
+
+These validation steps helped ensure that the data was reliable for meaningful visualizations and correlation analysis.
+
+---
+
