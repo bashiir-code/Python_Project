@@ -215,13 +215,31 @@ released should be changed to datetime:
                      print(missing_values)
 
 - **Duplicate Records**: Confirmed that there were no duplicated movie entries in the dataset.
-- 
+  
                       # Check duplicate rows in the DataFrame
                        duplicate_rows = movies.duplicated().sum()
                        print(f"Number of duplicate rows: {duplicate_rows}")
   
                        Output:
                         Number of duplicate rows: 0
+- **Wrong Data**
+               
+                      # Check if there any mismatches between the 'year' and 'released' columns
+
+                       z = 0
+                       for (x, y) in zip(movies['year'], movies['released']):
+                            if x != y.year:
+                                     z
+                       print(z)
+
+                       Output : 1297   that is huge number of missmatch data
+
+                       # correct the 'year' column based on the 'released' column
+                       for (x, y) in zip(movies['year'], movies['released']):
+                          if x != y.year:
+                              x = y.year
+                            
+
   
 - **Initial Summary**: Generated basic statistical summaries to identify any data distribution issues or outliers.
 
