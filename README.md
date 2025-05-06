@@ -104,6 +104,8 @@ The goal is to **calculate correlation coefficients** and **visualize relationsh
              # Load the CSV file into a pandas DataFrame
              movies = pd.read_csv(csv_file_path)
 - **Header Correction**: Ensured proper column names were assigned during data import.
+
+
                 # Check the columns of the DataFrame
                 print("Columns in the DataFrame:")
                 print(movies.columns)
@@ -141,10 +143,86 @@ The goal is to **calculate correlation coefficients** and **visualize relationsh
                   runtime     float64
                   dtype: object
 
-year should be changed to datetime
-  
+released should be changed to datetime:
+                 #example (June 13, 1980 (United States))  should be  yyyy-mm-dd
+            
+                 movies['released'] = movies['released'].str.extract(r'([A-Za-z]+\s\d{1,2},\s\d{4})')
+                 movies['released'] = pd.to_datetime(movies['released'], errors='coerce')
+
 - **Missing Values**: Checked for and flagged missing or null entries for critical fields like `budget`, `gross`, and `score`.
+
+                 # see the columns of the DataFrame and how many not null values are in each column 
+                 movies.info()
+
+                 | #  | Column   | Non-Null Count | Dtype   |
+                 | -- | -------- | -------------- | ------- |
+                 | 0  | name     | 7668           | object  |
+                 | 1  | rating   | 7591           | object  |
+                 | 2  | genre    | 7668           | object  |
+                 | 3  | year     | 7668           | int64   |
+                 | 4  | released | 7666           | object  |
+                 | 5  | score    | 7665           | float64 |
+                 | 6  | votes    | 7665           | float64 |
+                 | 7  | director | 7668           | object  |
+                 | 8  | writer   | 7665           | object  |
+                 | 9  | star     | 7667           | object  |
+                 | 10 | country  | 7665           | object  |
+                 | 11 | budget   | 5497           | float64 |
+                 | 12 | gross    | 7479           | float64 |
+                 | 13 | company  | 7651           | object  |
+                 | 14 | runtime  | 7664           | float64 |
+
+                 We can see that  budget has a lot missing values. gross is the second one that has least not null values.
+
+                  # Check for missing values
+                  missing_values = movies.isnull().sum()
+                  missing_values = missing_values[missing_values > 0]
+                  print(missing_values)
+
+                  | Column   | Missing Values |
+                  | -------- | -------------- |
+                  | rating   | 77             |
+                  | released | 2              |
+                  | score    | 3              |
+                  | votes    | 3              |
+                  | writer   | 3              |
+                  | star     | 1              |
+                  | country  | 3              |
+                  | budget   | 2,171          |
+                  | gross    | 189            |
+                  | company  | 17             |
+                  | runtime  | 4              |
+
+                  # Fill missing values in the 'rating' column with the mode of the column
+                  movies.rating.fillna(movies["rating"].mode()[0], inplace = True)
+
+                  # Remove missing values in the 'released' column by dropping rows with NaN values            movies = movies.dropna(subset = ['released'])
+  
+
+                   # Fill missing values in the 'score', 'votes', 'runtime', 'budget' and 
+                    'gross' columns with the median of the column
+                    for col in ['score', 'votes', 'runtime', 'budget', 'gross']:
+                         movies[col].fillna(movies[col].median(), inplace=True)
+
+                   # Fill missing values in the 'writer' , 'star', 'company' and 'country' columns with the Unknown string
+                    for col in ['writer', 'star', 'company', 'country']:
+                           movies[col].fillna('Unknown', inplace = True)
+
+                     
+                     # Check if there are any missing values left in the dataset
+                     missing_values = movies.isnull().sum()
+                     missing_values = missing_values[missing_values > 0]
+                     print(missing_values)
+
 - **Duplicate Records**: Confirmed that there were no duplicated movie entries in the dataset.
+- 
+                      # Check duplicate rows in the DataFrame
+                       duplicate_rows = movies.duplicated().sum()
+                       print(f"Number of duplicate rows: {duplicate_rows}")
+  
+                       Output:
+                        Number of duplicate rows: 0
+  
 - **Initial Summary**: Generated basic statistical summaries to identify any data distribution issues or outliers.
 
 These validation steps helped ensure that the data was reliable for meaningful visualizations and correlation analysis.
