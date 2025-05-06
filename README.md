@@ -225,6 +225,36 @@ released should be changed to datetime:
   
 - **Initial Summary**: Generated basic statistical summaries to identify any data distribution issues or outliers.
 
+
+                      #initial summary of the categorical columns
+                      movies.describe(include = 'object').T.sort_values(by = 'unique', ascending = False)
+
+ | Column   | Non-Null Count | Unique Values | Most Frequent (Top) |Frequency (Freq) |
+| -------- | -------------- | ------------- | ------------------- | ---------------- |
+| name     | 7,609          | 7,454         | *Nobody's Fool*     | 3                |
+| rating   | 7,609          | 12            | R                   | 3,739            |
+| genre    | 7,609          | 19            | Comedy              | 2,228            |
+| director | 7,609          | 2,935         | Woody Allen         | 38               |
+| writer   | 7,609          | 4,513         | Woody Allen         | 37               |
+| star     | 7,609          | 2,785         | Nicolas Cage        | 43               |
+| country  | 7,609          | 60            | United States       | 5,453            |
+| company  | 7,609          | 2,360         | Universal Pictures  | 377              |
+
+
+
+                   # Exclude non-numerical columns before describing and sorting
+                   movies.describe(include=[np.number]).T.sort_values(by='mean', ascending=False)
+
+| Column      | Count | Mean       | Std Dev     | Min   | 25%        | 50%        | 75%        | Max           |
+| ----------- | ----- | ---------- | ----------- | ----- | ---------- | ---------- | ---------- | ------------- |
+| **gross**   | 7609  | 77,632,640 | 164,424,900 | 309   | 4,889,971  | 20,420,288 | 73,906,736 | 2,847,246,000 |
+| **budget**  | 7609  | 31,574,220 | 35,818,230  | 3,000 | 14,000,000 | 21,000,000 | 32,000,000 | 356,000,000   |
+| **votes**   | 7609  | 88,697     | 163,770     | 7     | 9,300      | 33,000     | 94,000     | 2,400,000     |
+| **year**    | 7609  | 2000.5     | 11.14       | 1980  | 1991       | 2001       | 2010       | 2020          |
+| **runtime** | 7609  | 107.3 min  | 18.62       | 55    | 95         | 104        | 116        | 366           |
+| **score**   | 7609  | 6.39       | 0.97        | 1.9   | 5.8        | 6.5        | 7.1        | 9.3           |
+
+
 These validation steps helped ensure that the data was reliable for meaningful visualizations and correlation analysis.
 
 ---
