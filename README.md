@@ -292,7 +292,7 @@ These validation steps helped ensure that the data was reliable for meaningful v
 
 
            Output:
-           ![image](https://github.com/user-attachments/assets/5827aff5-e852-4a80-b3df-bb843421345c)
+![image](https://github.com/user-attachments/assets/5827aff5-e852-4a80-b3df-bb843421345c)
 
             
              
