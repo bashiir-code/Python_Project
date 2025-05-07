@@ -321,9 +321,12 @@ The scatter plot gives a visual sense of the relationship, but it's still diffic
 
 ![image](https://github.com/user-attachments/assets/7cc93a12-ea4d-45b3-a99a-c70c13632253)
 
-We can see that the most interesting correlations are between budget and gross earnings, as well as between gross earnings and vote count. This makes sense: if a film receives significant investment, it has the potential to generate more revenue. Similarly, if audiences enjoy a film, it tends to receive more votes and attract a larger audience, contributing to higher earnings.
+We can see that the most interesting relationships are between budget and gross earnings, and between gross earnings and the number of votes. This makes sense when a movie has a big budget, it has the resources to reach a wider audience and earn more money. Also, if people enjoy a film, they’re more likely to vote for it, and more votes usually lead to more visibility and higher earnings.
 
-The third strongest correlation, between budget and vote count, further supports the idea that higher investments can lead to greater audience engagement and, ultimately, higher earnings. However, whether a film's investment is wise or effective is a different question that needs to be invistigated.
+The third strongest connection is between budget and votes. This supports the idea that spending more on a film helps it gain more attention and audience engagement. However, spending a lot doesn’t always mean the investment was a smart one. That’s something we’d need to explore further.
+
+What’s really interesting is the weak correlation between vote count and average score, it’s only about 41%. Normally, you might expect that popular movies would also be highly rated. Instead, this shows that a film can attract a huge number of viewers without being rated very well.
+
 
 
 
