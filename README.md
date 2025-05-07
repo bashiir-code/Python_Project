@@ -294,6 +294,40 @@ These validation steps helped ensure that the data was reliable for meaningful v
            Output:
 ![image](https://github.com/user-attachments/assets/5827aff5-e852-4a80-b3df-bb843421345c)
 
+
+We can observe that the highest revenue-generating films tend to have large investments, but the pattern isn't entirely clear. Let's use a correlation plot to better understand the relationship.
+
+![image](https://github.com/user-attachments/assets/8b9e67bf-93b0-485d-8e3f-9a6d38d35c32)
+
+
+We can see from the plot that in general, films with higher budgets tend to generate higher revenues. However, there are exceptions, indicating that budget alone does not guarantee success.
+
+The scatter plot gives a visual sense of the relationship, but it's still difficult to fully grasp the strength and direction of the correlations just by looking at it. To get a clearer picture, we can use a heatmap that displays the correlation coefficients between all numerical variables. 
+
+# Compute the correlation matrix for numeric columns only
+               plt.figure(figsize=(12, 8)) 
+               sns.heatmap(
+                   movies.select_dtypes(include=[np.number]).corr(method='pearson'),
+                   annot=True,
+                   cmap='coolwarm',  
+                   fmt='.2f',  
+                   linewidths=0.5,  
+                   cbar_kws={'shrink': 0.8} 
+                )
+                plt.title('Correlation Matrix of Numeric Columns', fontsize=16) 
+                plt.xticks(rotation=45, ha='right')  
+                plt.yticks(rotation=0)  
+                plt.show()
+
+![image](https://github.com/user-attachments/assets/7cc93a12-ea4d-45b3-a99a-c70c13632253)
+
+We can see that the most interesting correlations are between budget and gross earnings, as well as between gross earnings and vote count. This makes sense: if a film receives significant investment, it has the potential to generate more revenue. Similarly, if audiences enjoy a film, it tends to receive more votes and attract a larger audience, contributing to higher earnings.
+
+The third strongest correlation, between budget and vote count, further supports the idea that higher investments can lead to greater audience engagement and, ultimately, higher earnings. However, whether a film's investment is wise or effective is a different question that needs to be invistigated.
+
+
+
+
             
              
 TODO:
