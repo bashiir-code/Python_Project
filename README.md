@@ -374,7 +374,8 @@ earnings between companies.")
              
                Output: There is a statistically significant difference in gross earnings between companies
 
-**Conclusion**
+**Conclusion:**
+
 After looking at over 6,800 movies from 1986 to 2016, we found that movies with bigger budgets usually make more money. That makes sense — more money spent often means better production and more marketing. Also, movies with more votes from users tend to earn more, which shows that audience interest plays a big role in success.
 
 One interesting thing is that just because a movie gets a lot of votes doesn't mean it's rated highly. People might watch and talk about a movie a lot, even if they don’t think it’s great.
