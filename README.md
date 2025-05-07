@@ -6,7 +6,7 @@ Exploratory Data Analysis on Commercial and Critical Success Factors
 
 ## Project Overview
 
-This case study explores trends and correlations in a dataset of **6,820 movies** released between **1986 and 2016**. The primary objective is to uncover **patterns and relationships** that explain what makes a movie successful — both commercially (box office) and critically (ratings, votes).
+This case study explores trends and correlations in a dataset of **6,820 movies** released between **1986 and 2016**. The primary objective is to uncover **patterns and relationships** that explain what makes a movie successful, both commercially (box office) and critically (ratings, votes).
 
 The dataset includes both **numerical** and **categorical** variables such as:
 
@@ -23,9 +23,9 @@ Through visualizations and correlation analysis, the project answers key busines
 
 ## Questions Explored
 
-- 📈 Does a higher budget correlate with higher revenue?
-- 🔍 Which features have the strongest correlations with movie success?
-- 🌍 Do production companies or countries significantly influence outcomes?
+-  Does a higher budget correlate with higher revenue?
+-  Which features have the strongest correlations with movie success?
+-  Do production companies or countries significantly influence outcomes?
 
 ---
 
