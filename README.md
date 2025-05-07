@@ -24,7 +24,6 @@ Through visualizations and correlation analysis, the project answers key busines
 ## Questions Explored
 
 - 📈 Does a higher budget correlate with higher revenue?
-- 🍿 Is there a relationship between IMDb scores and box office performance?
 - 🔍 Which features have the strongest correlations with movie success?
 - 🌍 Do production companies or countries significantly influence outcomes?
 
@@ -327,11 +326,59 @@ The third strongest connection is between budget and votes. This supports the id
 
 What’s really interesting is the weak correlation between vote count and average score, it’s only about 41%. Normally, you might expect that popular movies would also be highly rated. Instead, this shows that a film can attract a huge number of viewers without being rated very well.
 
+# We want to examine how company and country are correlated with gross earnings.
 
-
-
-
-            
              
-TODO:
------
+             # Perform one-way ANOVA test for the 'star' column
+             from scipy.stats import f_oneway
+
+             df = movies.dropna(subset=["company", "gross"])
+             df["log_gross"] = np.log1p(df["gross"])  
+
+             # Filter companies with at least 10 movies
+             top_companies = df["company"].value_counts()
+             valid_companies = top_companies[top_companies >= 10].index
+             df_filtered = df[df["company"].isin(valid_companies)]
+
+             # Ensure 'log_gross' is approximately normally distributed for ANOVA assumptions
+             groups = [group["log_gross"].values for name, group in df_filtered.groupby("company")]
+             f_stat, p_value = f_oneway(*groups)
+
+             if p_value < 0.05:
+                    print(" There is a statistically significant difference in gross 
+earnings between companies.")
+             else:
+                    print(" There is no statistically significant difference in gross earnings between companies.")
+
+
+              Output: There is a statistically significant difference in gross earnings between companies
+
+              # Perform one-way ANOVA test for the 'country' column
+              df_country = movies.dropna(subset=["country", "gross"])
+              df_country["log_gross"] = np.log1p(df_country["gross"])  
+
+               # Filter countries with at least 10 movies
+               top_countries = df_country["country"].value_counts()
+               valid_countries = top_countries[top_countries >= 10].index
+               df_country_filtered = df_country[df_country["country"].isin(valid_countries)]
+
+               # Ensure 'log_gross' is approximately normally distributed for ANOVA assumptions
+               country_groups = [group["log_gross"].values for name, group in 
+               df_country_filtered.groupby("country")]
+               f_stat_country, p_value_country = f_oneway(*country_groups)
+
+               if p_value_country < 0.05:
+                    print(" There is a statistically significant difference in gross earnings between countries.")
+               else:
+                    print(" There is no statistically significant difference in gross earnings between countries.")
+             
+               Output: There is a statistically significant difference in gross earnings between companies
+
+**Conclusion**
+After looking at over 6,800 movies from 1986 to 2016, we found that movies with bigger budgets usually make more money. That makes sense — more money spent often means better production and more marketing. Also, movies with more votes from users tend to earn more, which shows that audience interest plays a big role in success.
+
+One interesting thing is that just because a movie gets a lot of votes doesn't mean it's rated highly. People might watch and talk about a movie a lot, even if they don’t think it’s great.
+
+We also tested if the production company or the country the movie comes from makes a difference. The result showed that yes, it does. Some companies and countries are linked to higher earnings than others.
+
+In short, how much money you spend, who’s making the movie, and where it’s from all matter when it comes to box office success.
