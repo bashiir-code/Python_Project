@@ -278,5 +278,23 @@ These validation steps helped ensure that the data was reliable for meaningful v
 ---
 
 
+**Correlation Search**
+
+
+    Let's examine whether there is a correlation between how much is invested in a film and the revenue it generates.
+
+           # Plotting scatter plot for budget vs gross earnings
+           plt.scatter(x=movies['budget'], y=movies['gross'], alpha= 0.5)
+           plt.title('Budget vs Gross Earnings')
+           plt.xlabel('Budget for Film')
+           plt.ylabel('Gross Earnings of Film')
+           plt.show()
+
+
+           Output:
+           ![image](https://github.com/user-attachments/assets/5827aff5-e852-4a80-b3df-bb843421345c)
+
+            
+             
 TODO:
 -----
